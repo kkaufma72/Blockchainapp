@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: bitcoin-whale-backend
+    runtime: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npx prisma db push --accept-data-loss && node dist/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bitcoin-whale-db
+          property: connectionString
+      - key: COINGECKO_API_KEY
+        sync: false
+      - key: FRED_API_KEY
+        sync: false
+      - key: GOOGLE_SERP_API_KEY
+        sync: false
+      - key: FRONTEND_URL
+        value: https://frontend-gy06ze8gr-kyle-kaufmans-projects.vercel.app
+      - key: PORT
+        value: 10000
+    healthCheckPath: /api/health
+
+databases:
+  - name: bitcoin-whale-db
+    databaseName: bitcoinwhale
+    region: oregon
+    plan: free
