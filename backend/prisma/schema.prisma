@@ -1,0 +1,269 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model WhaleTransaction {
+  id              String   @id @default(uuid())
+  hash            String   @unique
+  timestamp       DateTime
+  blockHeight     Int?
+  fromAddress     String?
+  toAddress       String?
+  value           Float
+  usdValue        Float?
+  classification  String?  // "deposit", "withdrawal", "transfer"
+  confidence      Float?   // For classification confidence
+  detected        Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([timestamp])
+  @@index([fromAddress])
+  @@index([toAddress])
+  @@index([value])
+  @@map("whale_transactions")
+}
+
+model WhaleStats {
+  id                String   @id @default(uuid())
+  address           String   @unique
+  label             String?
+  totalVolume       Float    @default(0)
+  transactionCount  Int      @default(0)
+  firstSeen         DateTime
+  lastSeen          DateTime
+  lastBalance       Float?
+  rank              Int?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([totalVolume])
+  @@index([transactionCount])
+  @@map("whale_stats")
+}
+
+model DetectedPattern {
+  id              String   @id @default(uuid())
+  type            String   // "accumulation", "distribution", "exchange_flow", "consolidation"
+  confidence      Float
+  description     String
+  addressCount    Int
+  volume          Float
+  timeframeStart  DateTime
+  timeframeEnd    DateTime
+  impact          String   // "bullish", "bearish", "neutral"
+  addresses       String   // Comma-separated addresses involved
+  metadata        String?  // JSON string for additional pattern data
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([type])
+  @@index([confidence])
+  @@index([timeframeStart])
+  @@map("detected_patterns")
+}
+
+model Alert {
+  id              String   @id @default(uuid())
+  type            String   // "volume", "address", "price"
+  condition       String
+  threshold       Float
+  enabled         Boolean  @default(true)
+  email           Boolean  @default(false)
+  push            Boolean  @default(false)
+  lastTriggered   DateTime?
+  triggerCount    Int      @default(0)
+  targetAddress   String?  // For address-specific alerts
+  metadata        String?  // JSON string
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([enabled])
+  @@index([type])
+  @@map("alerts")
+}
+
+model AlertLog {
+  id          String   @id @default(uuid())
+  alertId     String
+  message     String
+  data        String?  // JSON string
+  sent        Boolean  @default(false)
+  sentAt      DateTime?
+  createdAt   DateTime @default(now())
+
+  @@index([alertId])
+  @@index([sent])
+  @@map("alert_logs")
+}
+
+model MacroIndicator {
+  id              String   @id @default(uuid())
+  date            DateTime
+  btcPrice        Float
+  sp500           Float?
+  goldPrice       Float?
+  dollarIndex     Float?
+  oilPrice        Float?
+  inflationRate   Float?
+  interestRate    Float?
+  vixIndex        Float?
+  housingIndex    Float?
+  createdAt       DateTime @default(now())
+
+  @@index([date])
+  @@map("macro_indicators")
+}
+
+model GeopoliticalEvent {
+  id              String   @id @default(uuid())
+  date            DateTime
+  type            String   // "war", "pandemic", "tariff", "disaster", "regulation", "election"
+  severity        Float    // 0-10 scale
+  description     String
+  impactOnBTC     Float?   // Percentage impact observed
+  region          String?
+  duration        Int?     // Days
+  createdAt       DateTime @default(now())
+
+  @@index([date])
+  @@index([type])
+  @@map("geopolitical_events")
+}
+
+model PredictionModel {
+  id              String   @id @default(uuid())
+  timestamp       DateTime @default(now())
+  currentPrice    Float
+  predictedPrice  Float    // Price prediction for next period
+  confidence      Float    // 0-100
+  recommendation  String   // "buy", "sell", "short", "hold"
+  strength        Float    // 0-10 signal strength
+  timeframe       String   // "1h", "24h", "7d", "30d"
+  factors         String   // JSON string of contributing factors
+  riskLevel       String   // "low", "medium", "high"
+  entryPrice      Float?
+  stopLoss        Float?
+  takeProfit      Float?
+  sentimentScore  Float?   // -1 to 1 from sentiment analysis
+  mlModelVersion  String?  // Version of ML model used
+  createdAt       DateTime @default(now())
+
+  @@index([timestamp])
+  @@index([recommendation])
+  @@map("predictions")
+}
+
+model PredictionAccuracy {
+  id                String   @id @default(uuid())
+  predictionId      String   @unique
+  predictedPrice    Float
+  actualPrice       Float
+  priceError        Float    // Percentage error
+  recommendation    String
+  wasCorrect        Boolean  // Did price move in predicted direction?
+  profitLoss        Float?   // Theoretical P/L if followed
+  timeframe         String
+  evaluatedAt       DateTime
+  createdAt         DateTime @default(now())
+
+  @@index([wasCorrect])
+  @@index([timeframe])
+  @@index([evaluatedAt])
+  @@map("prediction_accuracy")
+}
+
+model MLModel {
+  id              String   @id @default(uuid())
+  version         String   @unique
+  modelType       String   // "neural_network", "regression", "ensemble"
+  architecture    String   // JSON string of model architecture
+  weights         String   // JSON string of model weights (or file path)
+  trainingData    String   // JSON metadata about training
+  accuracy        Float    // Overall accuracy score 0-100
+  precision       Float?
+  recall          Float?
+  f1Score         Float?
+  trainedAt       DateTime
+  isActive        Boolean  @default(false)
+  createdAt       DateTime @default(now())
+
+  @@index([isActive])
+  @@index([accuracy])
+  @@map("ml_models")
+}
+
+model SentimentData {
+  id              String   @id @default(uuid())
+  timestamp       DateTime @default(now())
+  source          String   // "twitter", "reddit", "news", "cryptopanic"
+  sentimentScore  Float    // -1 (very bearish) to 1 (very bullish)
+  volumeScore     Float    // 0-100 how much chatter
+  keywords        String   // Comma-separated trending keywords
+  newsCount       Int?
+  positiveCount   Int?
+  negativeCount   Int?
+  neutralCount    Int?
+  rawData         String?  // JSON string of raw sentiment data
+  createdAt       DateTime @default(now())
+
+  @@index([timestamp])
+  @@index([source])
+  @@index([sentimentScore])
+  @@map("sentiment_data")
+}
+
+model PriceHistory {
+  id              String   @id @default(uuid())
+  timestamp       DateTime @default(now())
+  price           Float
+  volume          Float?
+  high            Float?
+  low             Float?
+  open            Float?
+  close           Float?
+  source          String   @default("coingecko") // "coingecko", "binance", etc.
+  
+  @@index([timestamp])
+  @@map("price_history")
+}
+
+model CorporateTreasury {
+  id              String   @id @default(uuid())
+  company         String
+  btcHoldings     Float
+  ethHoldings     Float    @default(0)
+  lastUpdated     DateTime
+  acquisitionCost Float?
+  marketValue     Float?
+  percentOfAssets Float?
+  isLeveraged     Boolean  @default(false)
+  leverageRatio   Float?
+  createdAt       DateTime @default(now())
+  
+  @@index([company, lastUpdated])
+  @@map("corporate_treasury")
+}
+
+model TreasuryEvent {
+  id              String   @id @default(uuid())
+  company         String
+  eventType       String   // "purchase", "sale", "report"
+  amount          Float
+  priceAtTime     Float
+  timestamp       DateTime
+  impact          String   // "bullish", "bearish", "neutral"
+  createdAt       DateTime @default(now())
+  
+  @@index([timestamp, eventType])
+  @@index([company])
+  @@map("treasury_events")
+}
