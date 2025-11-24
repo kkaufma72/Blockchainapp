@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { api } from '../lib/api'
 import { Blocks, Info } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
@@ -8,15 +7,13 @@ export default function Stats() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    fetchStats()
-  }, [])
-
   const fetchStats = async () => {
     try {
       setError(null)
-      const response = await api.get('/api/blockchain/latest-block')
-      setLatestBlock(response.data)
+      // Fetch real Bitcoin blockchain data from Blockchain.info public API
+      const response = await fetch('https://blockchain.info/latestblock?cors=true')
+      const data = await response.json()
+      setLatestBlock(data)
     } catch (err) {
       setError('Failed to fetch blockchain stats')
       console.error(err)
@@ -24,6 +21,13 @@ export default function Stats() {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    fetchStats()
+    // Refresh every 2 minutes
+    const interval = setInterval(fetchStats, 120000)
+    return () => clearInterval(interval)
+  }, [])
 
   const formatDate = (timestamp: number) => {
     return new Date(timestamp * 1000).toLocaleString()

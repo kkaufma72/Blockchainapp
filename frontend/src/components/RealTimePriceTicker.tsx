@@ -1,11 +1,46 @@
 import React, { useEffect, useState } from 'react'
 import { TrendingUp, TrendingDown, Activity } from 'lucide-react'
-import { usePriceUpdates } from '../hooks/useWebSocket'
+import axios from 'axios'
+
+interface PriceData {
+  price: number
+  change24h: number
+  timestamp: string
+}
 
 const RealTimePriceTicker: React.FC = () => {
-  const { price, isConnected } = usePriceUpdates()
+  const [price, setPrice] = useState<PriceData | null>(null)
   const [priceChange, setPriceChange] = useState<'up' | 'down' | 'neutral'>('neutral')
   const [previousPrice, setPreviousPrice] = useState<number | null>(null)
+  const [isConnected, setIsConnected] = useState(false)
+
+  // Fetch real Bitcoin price from CoinGecko public API
+  const fetchPrice = async () => {
+    try {
+      const response = await axios.get(
+        'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true'
+      )
+      const btcData = response.data.bitcoin
+      setPrice({
+        price: btcData.usd,
+        change24h: btcData.usd_24h_change,
+        timestamp: new Date().toISOString()
+      })
+      setIsConnected(true)
+    } catch (error) {
+      console.error('Failed to fetch BTC price:', error)
+      setIsConnected(false)
+    }
+  }
+
+  useEffect(() => {
+    // Fetch immediately
+    fetchPrice()
+    
+    // Update every 30 seconds
+    const interval = setInterval(fetchPrice, 30000)
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
     if (price && previousPrice !== null) {
@@ -32,7 +67,7 @@ const RealTimePriceTicker: React.FC = () => {
       <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-6 border border-gray-700">
         <div className="flex items-center justify-center gap-2 text-gray-400">
           <Activity className="animate-pulse" size={20} />
-          <span>Connecting to live price feed...</span>
+          <span>Loading live Bitcoin price...</span>
         </div>
       </div>
     )
