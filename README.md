@@ -357,7 +357,3 @@ MIT License - feel free to use this project for learning purposes.
 
 
 
-<p align="center">
-  <sub>⭐ Star this repo if you found it helpful!</sub>
-</p>
-
