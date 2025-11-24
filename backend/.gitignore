@@ -8,3 +8,4 @@ prisma/dev.db-journal
 
 # Generated files
 /src/generated/prisma
+.vercel
