@@ -5,19 +5,19 @@ WORKDIR /app
 # Install OpenSSL for Prisma
 RUN apt-get update -y && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 
-# Copy only backend files
+# Copy backend package metadata and Prisma schema first (for layer caching + postinstall)
 COPY package*.json ./
 COPY tsconfig.json ./
 COPY prisma ./prisma
-COPY src ./src
 
-# Install ALL dependencies (not just production)
+# Install ALL dependencies (dev + prod) for the backend workspace
 RUN npm install
 
-# Generate Prisma client
-RUN npx prisma generate
+# Copy application source
+COPY src ./src
 
-# Build TypeScript
+# Generate Prisma client and build TypeScript output
+RUN npx prisma generate
 RUN npm run build
 
 EXPOSE 8080
