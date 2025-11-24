@@ -4,10 +4,10 @@
   "outputDirectory": "frontend/dist",
   "builds": [
     {
-      "src": "backend/src/index.ts",
+      "src": "backend/api/index.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["backend/prisma/**"]
+        "includeFiles": ["backend/prisma/**", "backend/src/**"]
       }
     },
     {
@@ -21,7 +21,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/src/index.ts"
+      "dest": "/backend/api/index.ts"
     },
     {
       "src": "/assets/(.*)",
