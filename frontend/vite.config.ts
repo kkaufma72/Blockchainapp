@@ -13,8 +13,22 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:4000',
-        changeOrigin: true
+        target: process.env.VITE_API_URL || 'http://localhost:3001',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '/api')
+      }
+    }
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'chart-vendor': ['recharts'],
+          'socket-vendor': ['socket.io-client']
+        }
       }
     }
   }

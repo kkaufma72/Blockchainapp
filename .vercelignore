@@ -1,0 +1,65 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Development files
+.env
+.env.local
+.env*.local
+
+# Database
+*.db
+*.sqlite
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+backend/dist/
+frontend/dist/
+
+# Docker
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# Git
+.git/
+.gitignore
+
+# Other deployment configs
+deploy.sh
+start.sh
+stop.sh
+fly.toml
+render.yaml
+Procfile
+nixpacks.toml
+railway.json
+
+# Tests
+**/__tests__/
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+coverage/
+
+# Documentation (keep only deployment guide)
+# Uncomment if you have other docs you don't want to deploy
+# docs/
+
