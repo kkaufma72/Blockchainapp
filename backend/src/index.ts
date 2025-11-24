@@ -18,7 +18,10 @@ const app = express();
 const httpServer = createServer(app);
 const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:3004',
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
@@ -103,8 +106,8 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() })
 });
 
-httpServer.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+httpServer.listen(PORT, '0.0.0.0' as any, () => {
+  console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
   
   // Initialize WebSocket server
   websocketService.initialize(httpServer);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Building2, TrendingUp, TrendingDown, AlertCircle, RefreshCw } from 'lucide-react'
+import { API_URL } from '../lib/api'
 
 interface TreasuryHolder {
   company: string
@@ -39,7 +40,7 @@ export const CorporateTreasuryDashboard: React.FC = () => {
   const fetchMetrics = async () => {
     try {
       setLoading(true)
-      const response = await fetch('http://localhost:4000/api/treasury/metrics')
+      const response = await fetch(`${API_URL}/api/treasury/metrics`)
       if (!response.ok) throw new Error('Failed to fetch metrics')
       const data = await response.json()
       setMetrics(data)

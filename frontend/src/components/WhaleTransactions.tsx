@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { api } from '../lib/api'
 import { RefreshCw, Clock } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -24,7 +24,7 @@ export default function WhaleTransactions() {
   const fetchTransactions = async () => {
     try {
       setError(null)
-      const response = await axios.get('/api/whales/transactions?limit=20')
+      const response = await api.get('/api/whales/transactions?limit=20')
       setTransactions(response.data)
     } catch (err) {
       setError('Failed to fetch whale transactions')

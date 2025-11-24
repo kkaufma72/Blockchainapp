@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import { TrendingUp, TrendingDown, Activity, RefreshCw } from 'lucide-react'
 import { usePriceHistory, usePredictions } from '../hooks/useWebSocket'
+import { API_URL } from '../lib/api'
 
 interface ComparisonDataPoint {
   timestamp: string
@@ -30,7 +31,7 @@ const PredictionComparison: React.FC = () => {
     setLoading(true)
     try {
       const hours = timeframe === '1h' ? 1 : timeframe === '6h' ? 6 : timeframe === '7d' ? 168 : 24
-      const response = await fetch(`http://localhost:4000/api/predictions/comparison?hours=${hours}`)
+      const response = await fetch(`${API_URL}/api/predictions/comparison?hours=${hours}`)
       const data = await response.json()
       setComparisonData(data)
       

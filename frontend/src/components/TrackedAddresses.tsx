@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { api } from '../lib/api'
 import { Wallet, TrendingUp, TrendingDown, Activity } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -33,7 +33,7 @@ export default function TrackedAddresses() {
   const fetchAddresses = async () => {
     try {
       setError(null)
-      const response = await axios.get('/api/whales/tracked-addresses')
+      const response = await api.get('/api/whales/tracked-addresses')
       setAddresses(response.data)
     } catch (err) {
       setError('Failed to fetch tracked addresses')
@@ -47,7 +47,7 @@ export default function TrackedAddresses() {
     try {
       setSelectedAddress(address)
       setAddressInfo(null)
-      const response = await axios.get(`/api/whales/monitor/${address}`)
+      const response = await api.get(`/api/whales/monitor/${address}`)
       setAddressInfo(response.data)
     } catch (err) {
       setError('Failed to monitor address')

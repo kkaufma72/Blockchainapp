@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { api } from '../lib/api'
 import { TrendingUp, TrendingDown } from 'lucide-react'
 
 interface PriceData {
@@ -13,7 +13,7 @@ export default function BTCPrice() {
   useEffect(() => {
     const fetchPrice = async () => {
       try {
-        const response = await axios.get('/api/price/current')
+        const response = await api.get('/api/price/current')
         setPriceData(response.data)
       } catch (error) {
         console.error('Failed to fetch BTC price:', error)

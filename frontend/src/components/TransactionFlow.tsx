@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { api } from '../lib/api'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts'
 import { Activity, TrendingUp } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -23,7 +23,7 @@ export default function TransactionFlow() {
 
   const fetchAggregates = async () => {
     try {
-      const response = await axios.get('/api/analytics/aggregates?hours=24')
+      const response = await api.get('/api/analytics/aggregates?hours=24')
       if (response.data.success && response.data.data.length > 0) {
         setVolumeData(response.data.data)
       } else {

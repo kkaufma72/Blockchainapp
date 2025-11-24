@@ -1,7 +1,8 @@
 import { useEffect, useState, useCallback } from 'react'
 import { io, Socket } from 'socket.io-client'
+import { API_URL } from '../lib/api'
 
-const SOCKET_URL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:4000'
+const SOCKET_URL = API_URL
 
 let socket: Socket | null = null
 

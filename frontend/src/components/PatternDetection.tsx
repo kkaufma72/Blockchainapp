@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { api } from '../lib/api'
 import { Brain, TrendingUp, TrendingDown, AlertTriangle, CheckCircle } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -29,7 +29,7 @@ export default function PatternDetection() {
 
   const fetchPatterns = async () => {
     try {
-      const response = await axios.get('/api/analytics/patterns?limit=10')
+      const response = await api.get('/api/analytics/patterns?limit=10')
       if (response.data.success && response.data.data.length > 0) {
         setPatterns(response.data.data)
       } else {

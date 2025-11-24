@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { api } from '../lib/api'
 import { Blocks, Info } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
@@ -15,7 +15,7 @@ export default function Stats() {
   const fetchStats = async () => {
     try {
       setError(null)
-      const response = await axios.get('/api/blockchain/latest-block')
+      const response = await api.get('/api/blockchain/latest-block')
       setLatestBlock(response.data)
     } catch (err) {
       setError('Failed to fetch blockchain stats')

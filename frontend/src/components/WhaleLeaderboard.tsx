@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { api } from '../lib/api'
 import { Trophy, TrendingUp, Wallet } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -24,7 +24,7 @@ export default function WhaleLeaderboard() {
 
   const fetchLeaderboard = async () => {
     try {
-      const response = await axios.get('/api/analytics/leaderboard?limit=10')
+      const response = await api.get('/api/analytics/leaderboard?limit=10')
       if (response.data.success) {
         setLeaderboard(response.data.data)
       }

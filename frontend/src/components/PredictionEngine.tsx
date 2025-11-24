@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { api } from '../lib/api'
 import { TrendingUp, TrendingDown, Minus, Brain, AlertTriangle, Target, Shield } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -36,7 +36,7 @@ export default function PredictionEngine() {
   const fetchPrediction = async () => {
     try {
       setLoading(true)
-      const response = await axios.get(`/api/predictions/current?timeframe=${timeframe}`)
+      const response = await api.get(`/api/predictions/current?timeframe=${timeframe}`)
       if (response.data.success) {
         setPrediction(response.data.data)
       }
