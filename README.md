@@ -1,4 +1,4 @@
-# 🐋 Bitcoin Whale Tracker
+# Bitcoin Whale Tracker
 
 > **Real-time cryptocurrency analytics platform for monitoring large Bitcoin transactions with ML-powered predictions and intelligent pattern detection**
 
@@ -12,13 +12,11 @@
 
 ---
 
-## 📸 Screenshots
 
-*[Add your screenshots here]*
 
 ---
 
-## 🌟 Features
+##  Features
 
 ### Real-Time Monitoring
 - **Live Whale Transactions** - Track Bitcoin transfers over $100K as they happen
@@ -45,7 +43,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 - **Framework:** React 18
@@ -89,7 +87,7 @@
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Node.js 20+ 
@@ -161,7 +159,7 @@ Blockchainapp-1/
 
 ---
 
-## 🎯 Key Features Explained
+##  Key Features Explained
 
 ### 1. Real-Time Whale Detection
 
@@ -218,7 +216,7 @@ Combines data from multiple sources for robust analysis:
 
 ---
 
-## 📈 Database Schema
+##  Database Schema
 
 15+ normalized tables including:
 - `whale_transactions` - Large BTC transfers
@@ -234,7 +232,7 @@ Combines data from multiple sources for robust analysis:
 
 ---
 
-## 🔒 Security & Best Practices
+##  Security & Best Practices
 
 - ✅ Environment variables for sensitive data
 - ✅ TypeScript for type safety
@@ -247,7 +245,7 @@ Combines data from multiple sources for robust analysis:
 
 ---
 
-## 🚢 Deployment
+##  Deployment
 
 ### Docker Deployment (Recommended)
 
@@ -281,7 +279,7 @@ flyctl deploy
 
 ---
 
-## 📚 API Documentation
+##  API Documentation
 
 ### Health Check
 ```bash
@@ -307,30 +305,8 @@ GET /api/patterns?timeframe=24h
 Response: [{ type, confidence, description, ... }]
 ```
 
----
 
-## 🎓 What I Learned
-
-### Technical Skills
-- Building real-time applications with WebSockets
-- Implementing machine learning models in production
-- Orchestrating multiple microservices with Docker
-- Complex database schema design with Prisma
-- External API integration and rate limiting
-- TypeScript across full stack
-- Background job scheduling
-- Data visualization techniques
-
-### Soft Skills
-- System architecture planning
-- API documentation
-- Project organization
-- Code documentation
-- Problem-solving complex integration issues
-
----
-
-## 🔮 Future Enhancements
+##  Future Enhancements
 
 - [ ] User authentication and personalized watchlists
 - [ ] Email/SMS alerts for whale activity
@@ -356,43 +332,30 @@ This is a portfolio project, but suggestions and feedback are welcome!
 
 ---
 
-## 📝 License
+##  License
 
 MIT License - feel free to use this project for learning purposes.
 
 ---
 
-## 👤 Author
+##  Author
 
 **Kyle Kaufman**
 
-- Portfolio: [Your portfolio URL]
-- LinkedIn: [Your LinkedIn]
 - GitHub: [@kkaufma72](https://github.com/kkaufma72)
-- Email: [Your email]
+- Email: kkaufma72@gmail.com
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - CoinGecko for reliable cryptocurrency data
 - Blockchain.info for on-chain data access
 - FRED for economic indicators
 - The open-source community for amazing tools
 
----
 
-## 📊 Project Stats
 
-![GitHub repo size](https://img.shields.io/github/repo-size/kkaufma72/Blockchainapp)
-![GitHub language count](https://img.shields.io/github/languages/count/kkaufma72/Blockchainapp)
-![GitHub top language](https://img.shields.io/github/languages/top/kkaufma72/Blockchainapp)
-
----
-
-<p align="center">
-  Made with ❤️ and ☕ by Kyle Kaufman
-</p>
 
 <p align="center">
   <sub>⭐ Star this repo if you found it helpful!</sub>
