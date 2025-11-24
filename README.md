@@ -1,243 +1,352 @@
 # 🐋 Bitcoin Whale Tracker
 
-> **Real-time Bitcoin whale transaction monitoring, pattern detection, and predictive analytics platform**
+> **Real-time cryptocurrency analytics platform for monitoring large Bitcoin transactions with ML-powered predictions and intelligent pattern detection**
 
-[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://your-app.vercel.app)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Built with](https://img.shields.io/badge/Built%20with-TypeScript-3178c6)](https://www.typescriptlang.org/)
-[![Deployed on](https://img.shields.io/badge/Deployed%20on-Vercel-000000)](https://vercel.com)
-
-## 🌐 [Live Demo](https://your-app.vercel.app)
-
-Track Bitcoin whale movements, detect patterns, and get AI-powered predictions in real-time.
+[![Live Demo](https://img.shields.io/badge/demo-live-success?style=for-the-badge)](https://frontend-oola794op-kyle-kaufmans-projects.vercel.app)
+[![GitHub](https://img.shields.io/badge/github-repository-blue?style=for-the-badge&logo=github)](https://github.com/kkaufma72/Blockchainapp)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 
 ---
 
 ## 📸 Screenshots
 
-<!-- Add your screenshots here -->
-![Dashboard](docs/screenshot-dashboard.png)
-![Whale Leaderboard](docs/screenshot-leaderboard.png)
-![Pattern Detection](docs/screenshot-patterns.png)
+*[Add your screenshots here]*
 
 ---
 
-## ✨ Features
+## 🌟 Features
 
-### 🔍 Real-Time Monitoring
-- **Live whale transactions** - Track large Bitcoin movements as they happen
-- **WebSocket updates** - Real-time price tickers and transaction feeds
-- **Alert system** - Get notified of significant market movements
+### Real-Time Monitoring
+- **Live Whale Transactions** - Track Bitcoin transfers over $100K as they happen
+- **WebSocket Streaming** - Bidirectional real-time data communication
+- **Price Ticker** - Live Bitcoin price updates from multiple sources
 
-### 📊 Advanced Analytics
-- **Pattern detection** - Identify accumulation, distribution, and market consolidation
-- **Whale leaderboard** - Track top addresses by volume and activity
-- **Transaction flow** - Visualize money movements across the network
-- **Corporate treasury tracking** - Monitor institutional Bitcoin holdings
+### AI & Machine Learning
+- **Price Predictions** - TensorFlow.js models forecast future prices
+- **Pattern Detection** - Identify accumulation, distribution, and consolidation patterns
+- **Sentiment Analysis** - NLP processing of news and social media
+- **Accuracy Tracking** - Historical performance metrics of predictions
 
-### 🤖 AI-Powered Predictions
-- **ML price predictions** - Neural network-based Bitcoin price forecasting
-- **Sentiment analysis** - Aggregate news and social media sentiment
-- **Multi-source data** - Combine on-chain, macro, and social metrics
-- **Accuracy tracking** - Historical prediction performance metrics
+### Advanced Analytics
+- **Whale Leaderboard** - Top addresses ranked by volume and activity
+- **Corporate Treasury** - Track institutional Bitcoin holdings (MicroStrategy, Tesla, etc.)
+- **Transaction Flow** - Visualize money movement across the network
+- **Multi-Source Data** - Aggregate from 11+ APIs for comprehensive analysis
 
-### 📈 Market Intelligence
-- **Macro indicators** - Correlate Bitcoin with S&P 500, gold, DXY, oil
-- **Geopolitical events** - Track major events affecting crypto markets
-- **DeFi metrics** - Monitor total value locked and protocol activity
-- **Developer activity** - Track Bitcoin GitHub commit trends
+### Data Visualization
+- **Interactive Charts** - Recharts-powered visualizations
+- **Pattern Detection Dashboard** - Real-time pattern identification
+- **Geopolitical Events** - Correlation with major world events
+- **Macro Indicators** - BTC vs S&P 500, Gold, DXY, Oil prices
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React 18** - Modern UI library
-- **TypeScript** - Type-safe development
-- **Vite** - Lightning-fast build tool
-- **TailwindCSS** - Utility-first styling
-- **Recharts** - Beautiful data visualizations
-- **Socket.io Client** - Real-time WebSocket connection
-- **Axios** - HTTP client
+- **Framework:** React 18
+- **Language:** TypeScript
+- **Build Tool:** Vite
+- **Styling:** TailwindCSS
+- **Charts:** Recharts
+- **Real-time:** Socket.io Client
+- **HTTP Client:** Axios
+- **State Management:** React Context API
 
 ### Backend
-- **Node.js** - JavaScript runtime
-- **Express** - Web application framework
-- **TypeScript** - End-to-end type safety
-- **Prisma ORM** - Next-generation database toolkit
-- **Socket.io** - WebSocket server
-- **TensorFlow.js** - Machine learning predictions
+- **Runtime:** Node.js 20
+- **Framework:** Express
+- **Language:** TypeScript
+- **ORM:** Prisma
+- **Database:** PostgreSQL 16
+- **Real-time:** Socket.io Server
+- **Job Scheduling:** node-cron
+- **ML:** TensorFlow.js
+- **NLP:** Natural, Compromise, Sentiment
 
-### Database & Infrastructure
-- **PostgreSQL** - Robust relational database
-- **Vercel** - Deployment platform
-- **Vercel Postgres** - Managed database
-- **Bull** - Job queue for background tasks
-- **Node-cron** - Scheduled data fetching
+### Infrastructure
+- **Containerization:** Docker & Docker Compose
+- **Frontend Deployment:** Vercel
+- **Backend Deployment:** Fly.io (or Docker)
+- **Database:** PostgreSQL (Docker/Fly.io)
 
-### External APIs & Data Sources
-- **CoinGecko** - Cryptocurrency prices and market data
-- **Blockchain.info** - On-chain transaction data
-- **FRED** - Federal Reserve economic data
-- **NewsAPI** - News sentiment analysis
+### External APIs
+- **CoinGecko** - Cryptocurrency prices
+- **Blockchain.info** - On-chain data
+- **FRED** - Economic indicators
+- **NewsAPI** - News sentiment
 - **CryptoCompare** - Social metrics
-- **Alpha Vantage** - Traditional finance correlation
-- **DefiLlama** - DeFi protocol metrics
+- **Alpha Vantage** - Traditional finance
+- **DefiLlama** - DeFi metrics
 - **Alternative.me** - Fear & Greed Index
+- **GitHub API** - Developer activity
+- **Messari** - Protocol data (optional)
+- **Glassnode** - On-chain analytics (optional)
 
 ---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js >= 20.18.1
-- npm >= 10.8.0
-- PostgreSQL database (local or cloud)
+- Node.js 20+ 
+- Docker Desktop
+- npm 10+
 
 ### Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/bitcoin-whale-tracker.git
-cd bitcoin-whale-tracker
+# Clone repository
+git clone https://github.com/kkaufma72/Blockchainapp.git
+cd Blockchainapp-1
 
-# Install all dependencies
-npm run install:all
+# Install dependencies
+cd backend && npm install
+cd ../frontend && npm install
 
-# Set up environment variables
-cp backend/.env.example backend/.env
-# Edit backend/.env with your database URL and API keys
+# Start with Docker
+docker-compose up -d
 
-# Run database migrations
-cd backend
-npx prisma migrate deploy
-cd ..
-
-# Start development servers
+# Frontend (in new terminal)
+cd frontend
 npm run dev
+
+# Visit: http://localhost:3000
 ```
 
-The app will be available at:
-- Frontend: http://localhost:3000
-- Backend: http://localhost:3001
-
----
-
-## 📦 Deployment to Vercel
-
-**Complete deployment guide:** [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md)
-
-### Quick Deploy
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/bitcoin-whale-tracker)
-
-Or manually:
+### Environment Variables
 
 ```bash
-# Install Vercel CLI
-npm install -g vercel
+# Backend (.env)
+DATABASE_URL=postgresql://whale:whalepassword@localhost:5434/bitcoinwhale
+PORT=3001
+NODE_ENV=development
 
-# Deploy
-vercel
-
-# Set environment variables in Vercel dashboard
-# Deploy to production
-vercel --prod
+# Optional API Keys (for full features)
+COINGECKO_API_KEY=your-key
+FRED_API_KEY=your-key
+NEWS_API_KEY=your-key
+CRYPTOCOMPARE_API_KEY=your-key
+ALPHA_VANTAGE_KEY=your-key
 ```
-
-**Required Environment Variables:**
-- `DATABASE_URL` - PostgreSQL connection string
-- `NODE_ENV=production`
-- `VITE_API_URL=/api`
 
 ---
 
-## 🔑 API Keys
-
-The app works with limited functionality out-of-the-box, but for full features, get these free API keys:
-
-| Service | Purpose | Free Tier | Get Key |
-|---------|---------|-----------|---------|
-| **CoinGecko** | Price data | Demo API | [Sign up](https://www.coingecko.com/en/api) |
-| **FRED** | Economic data | Unlimited | [Request](https://fred.stlouisfed.org/docs/api/api_key.html) |
-| **NewsAPI** | News sentiment | 100 req/day | [Sign up](https://newsapi.org/) |
-| **CryptoCompare** | Social metrics | Yes | [Sign up](https://www.cryptocompare.com/cryptopian/api-keys) |
-| **Alpha Vantage** | TradFi data | 25 req/day | [Sign up](https://www.alphavantage.co/support/#api-key) |
-
-Add them to your `.env` file or Vercel environment variables.
-
----
-
-## 📁 Project Structure
+## 📊 Project Structure
 
 ```
-bitcoin-whale-tracker/
-├── backend/                  # Express API server
+Blockchainapp-1/
+├── backend/
 │   ├── src/
-│   │   ├── index.ts         # Main server entry
-│   │   ├── routes/          # API route handlers
-│   │   ├── services/        # Business logic
-│   │   │   ├── whaleService.ts
-│   │   │   ├── predictionService.ts
-│   │   │   ├── mlTrainingService.ts
-│   │   │   └── ...
-│   │   └── lib/             # Shared utilities
+│   │   ├── routes/           # API endpoints
+│   │   ├── services/         # Business logic
+│   │   ├── lib/             # Utilities
+│   │   └── index.ts         # Server entry
 │   ├── prisma/
 │   │   ├── schema.prisma    # Database schema
 │   │   └── migrations/      # DB migrations
-│   └── package.json
-├── frontend/                 # React application
+│   └── Dockerfile
+├── frontend/
 │   ├── src/
-│   │   ├── App.tsx          # Main app component
 │   │   ├── components/      # React components
-│   │   ├── hooks/           # Custom hooks
-│   │   └── lib/             # Utilities
-│   └── package.json
-├── vercel.json              # Vercel configuration
-└── VERCEL_DEPLOYMENT.md     # Deployment guide
+│   │   ├── hooks/          # Custom hooks
+│   │   ├── lib/            # Utilities
+│   │   └── App.tsx         # Main component
+│   └── Dockerfile
+└── docker-compose.yml       # Container orchestration
 ```
 
 ---
 
 ## 🎯 Key Features Explained
 
-### Pattern Detection Algorithm
+### 1. Real-Time Whale Detection
 
-The app uses proprietary algorithms to detect whale behavior patterns:
+The system continuously monitors the Bitcoin blockchain and detects large transactions (whales):
 
 ```typescript
-// Example: Accumulation Detection
-- Monitors multiple addresses for coordinated buying
-- Analyzes transaction timing and volume
-- Calculates confidence scores based on historical patterns
-- Identifies bullish/bearish implications
+// Whale detection with pattern classification
+interface WhaleTransaction {
+  hash: string;
+  value: number;
+  usdValue: number;
+  classification: 'deposit' | 'withdrawal' | 'transfer';
+  confidence: number;
+}
 ```
 
-### ML Price Prediction
+### 2. ML Price Predictions
 
-Uses TensorFlow.js for price forecasting:
+TensorFlow.js models trained on:
+- Historical price data
+- Whale activity patterns
+- Macro economic indicators
+- Sentiment scores
+- On-chain metrics
 
-- **Training Data**: Historical prices, whale activity, macro indicators, sentiment
-- **Model**: Multi-layer neural network with LSTM layers
-- **Output**: 1-hour, 24-hour, 7-day, and 30-day predictions
-- **Accuracy Tracking**: Logs predictions vs actual prices
+```typescript
+// Multi-factor price prediction
+const prediction = await predictionService.generatePrediction({
+  currentPrice,
+  whaleActivity,
+  sentimentScore,
+  macroIndicators,
+  onChainData
+});
+```
 
-### Multi-Source Data Aggregation
+### 3. Pattern Detection Algorithms
 
-Combines 11+ data sources for comprehensive analysis:
+Identifies market patterns with confidence scoring:
+- **Accumulation** - Large addresses buying
+- **Distribution** - Whales selling
+- **Consolidation** - Sideways movement
+- **Exchange Flow** - Movement to/from exchanges
 
-1. **On-Chain**: Blockchain.info, Glassnode (optional), Messari (optional)
-2. **Price**: CoinGecko, CryptoCompare
-3. **Macro**: FRED (economic indicators), Alpha Vantage (stocks)
-4. **Sentiment**: NewsAPI, CryptoPanic, Alternative.me
-5. **DeFi**: DefiLlama
-6. **Development**: GitHub API
+### 4. Multi-Source Data Aggregation
+
+Combines data from multiple sources for robust analysis:
+- **Price Data:** CoinGecko, CryptoCompare
+- **On-Chain:** Blockchain.info, Glassnode, Messari
+- **Macro:** FRED, Alpha Vantage
+- **Sentiment:** NewsAPI, CryptoPanic, Alternative.me
+- **DeFi:** DefiLlama
+- **Development:** GitHub API
+
+---
+
+## 📈 Database Schema
+
+15+ normalized tables including:
+- `whale_transactions` - Large BTC transfers
+- `whale_stats` - Aggregated address statistics
+- `detected_patterns` - Market pattern records
+- `predictions` - ML prediction history
+- `prediction_accuracy` - Model performance tracking
+- `sentiment_data` - News/social sentiment
+- `macro_indicators` - Economic data
+- `corporate_treasury` - Institutional holdings
+- `price_history` - Historical price data
+- `ml_models` - Model versioning
+
+---
+
+## 🔒 Security & Best Practices
+
+- ✅ Environment variables for sensitive data
+- ✅ TypeScript for type safety
+- ✅ Prisma ORM for SQL injection prevention
+- ✅ Input validation and sanitization
+- ✅ CORS configuration
+- ✅ Error handling middleware
+- ✅ Database connection pooling
+- ✅ Rate limiting on external APIs
+
+---
+
+## 🚢 Deployment
+
+### Docker Deployment (Recommended)
+
+```bash
+# Start all services
+docker-compose up -d
+
+# Check status
+docker-compose ps
+
+# View logs
+docker-compose logs -f backend
+
+# Stop services
+docker-compose down
+```
+
+### Vercel (Frontend)
+
+```bash
+cd frontend
+vercel --prod
+```
+
+### Fly.io (Backend)
+
+```bash
+cd backend
+flyctl deploy
+```
+
+---
+
+## 📚 API Documentation
+
+### Health Check
+```bash
+GET /api/health
+Response: { "status": "ok", "timestamp": "..." }
+```
+
+### Whale Transactions
+```bash
+GET /api/whales/transactions?limit=50
+Response: [{ hash, value, timestamp, ... }]
+```
+
+### Price Prediction
+```bash
+GET /api/predictions/current
+Response: { predictedPrice, confidence, factors, ... }
+```
+
+### Pattern Detection
+```bash
+GET /api/patterns?timeframe=24h
+Response: [{ type, confidence, description, ... }]
+```
+
+---
+
+## 🎓 What I Learned
+
+### Technical Skills
+- Building real-time applications with WebSockets
+- Implementing machine learning models in production
+- Orchestrating multiple microservices with Docker
+- Complex database schema design with Prisma
+- External API integration and rate limiting
+- TypeScript across full stack
+- Background job scheduling
+- Data visualization techniques
+
+### Soft Skills
+- System architecture planning
+- API documentation
+- Project organization
+- Code documentation
+- Problem-solving complex integration issues
+
+---
+
+## 🔮 Future Enhancements
+
+- [ ] User authentication and personalized watchlists
+- [ ] Email/SMS alerts for whale activity
+- [ ] Mobile app with React Native
+- [ ] More sophisticated ML models
+- [ ] GraphQL API for efficient data fetching
+- [ ] Comprehensive test coverage (Jest, Cypress)
+- [ ] CI/CD pipeline with GitHub Actions
+- [ ] Redis caching layer
+- [ ] Elasticsearch for advanced queries
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+This is a portfolio project, but suggestions and feedback are welcome!
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -249,27 +358,43 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - feel free to use this project for learning purposes.
 
 ---
 
-## 🌟 Acknowledgments
+## 👤 Author
 
-- Built as a portfolio project to demonstrate full-stack development skills
-- Inspired by the need for transparent whale activity monitoring
-- Data provided by CoinGecko, Blockchain.info, FRED, and other amazing APIs
+**Kyle Kaufman**
 
----
-
-## 📧 Contact
-
-**Your Name** - [@yourtwitter](https://twitter.com/yourtwitter) - your.email@example.com
-
-**Project Link:** [https://github.com/yourusername/bitcoin-whale-tracker](https://github.com/yourusername/bitcoin-whale-tracker)
-
-**Live Demo:** [https://your-app.vercel.app](https://your-app.vercel.app)
+- Portfolio: [Your portfolio URL]
+- LinkedIn: [Your LinkedIn]
+- GitHub: [@kkaufma72](https://github.com/kkaufma72)
+- Email: [Your email]
 
 ---
 
-Made with ❤️ and ☕ | Deployed on Vercel
+## 🙏 Acknowledgments
+
+- CoinGecko for reliable cryptocurrency data
+- Blockchain.info for on-chain data access
+- FRED for economic indicators
+- The open-source community for amazing tools
+
+---
+
+## 📊 Project Stats
+
+![GitHub repo size](https://img.shields.io/github/repo-size/kkaufma72/Blockchainapp)
+![GitHub language count](https://img.shields.io/github/languages/count/kkaufma72/Blockchainapp)
+![GitHub top language](https://img.shields.io/github/languages/top/kkaufma72/Blockchainapp)
+
+---
+
+<p align="center">
+  Made with ❤️ and ☕ by Kyle Kaufman
+</p>
+
+<p align="center">
+  <sub>⭐ Star this repo if you found it helpful!</sub>
+</p>
 
