@@ -2,8 +2,8 @@ FROM node:20-slim
 
 WORKDIR /app
 
-# Install OpenSSL for Prisma
-RUN apt-get update -y && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
+# Install OpenSSL for Prisma and curl for health checks
+RUN apt-get update -y && apt-get install -y openssl curl && rm -rf /var/lib/apt/lists/*
 
 # Copy backend package metadata and Prisma schema first (for layer caching + postinstall)
 COPY package*.json ./
@@ -20,6 +20,6 @@ COPY src ./src
 RUN npx prisma generate
 RUN npm run build
 
-EXPOSE 3001
+EXPOSE 8080
 
 CMD ["sh", "-c", "npx prisma db push --accept-data-loss && node dist/index.js"]

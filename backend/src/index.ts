@@ -16,7 +16,7 @@ dotenv.config();
 
 const app = express();
 const httpServer = createServer(app);
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
 app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:3004',
@@ -112,8 +112,11 @@ httpServer.listen(PORT, '0.0.0.0' as any, () => {
   // Initialize WebSocket server
   websocketService.initialize(httpServer);
   
-  // Start background jobs
-  backgroundJobService.start();
+  // Start background jobs (DISABLED for now to avoid rate limiting)
+  // TODO: Re-enable after adding API keys and caching
+  // backgroundJobService.start();
+  
+  console.log('⚠️  Background jobs disabled - add API keys to enable');
 });
 
 // Graceful shutdown

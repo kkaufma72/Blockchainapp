@@ -13,6 +13,9 @@ primary_region = 'sjc'
   NODE_ENV = 'production'
   PORT = '8080'
 
+[deploy]
+  release_command = "npx prisma db push --accept-data-loss"
+
 [http_service]
   internal_port = 8080
   force_https = true
